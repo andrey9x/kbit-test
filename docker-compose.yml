@@ -1,0 +1,21 @@
+services:
+  php:
+    image: yiisoftware/yii2-php:8.3-apache
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    ports:
+      - '8000:80'
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0.36
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      TZ: Europe/Moscow
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: app
+    ports:
+      - 3386:3306
