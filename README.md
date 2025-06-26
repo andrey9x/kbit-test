@@ -1,5 +1,6 @@
 docker-compose up -d
 
+```bash
 curl -X POST \
    -H "Content-Type: multipart/form-data" \
    -F "s_name=cname" \
@@ -11,3 +12,4 @@ curl -X POST \
    -F "c_state=partial" \
    -F "control=left" \
    http://localhost:8000/queue-status/create
+```
